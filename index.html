@@ -118,77 +118,6 @@
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-          
-        <a-entity id="slimecore" ply-model="src: Slime Inner.ply" position="24.20526 -2.9799 -3.77098" rotation="-90 180 0" scale="1.5 1.5 1.5" animation_first="easing: linear; property: position; to: 24.205 -2.980 -3.770; dur: 2000; startEvents: loaded, animationcomplete_fourth" animation_second="property: rotation; to: -90 0 0; dur: 2000; startEvents: animationcomplete_first" animation_third="easing: linear; property: position; to: 24.205 -2.980 6.185; dur: 2000; startEvents: animationcomplete_second" animation_fourth="property: rotation; to: -90 90 0; dur: 2000; startEvents: animationcomplete_third"></a-entity>
-        animation="property: position; dur: 5000; from: 24.205 -2.980 6.185; to: 24.205 -2.980 -3.770; loop: true; dir: altrenate"
-        
-        <a-entity id="slimejelly" ply-model="src: Slime Outter.ply" position="23 -1.589 0" rotation="-90 90 0" scale="" material="opacity: 0.4; shader: flat; transparent: true; vertexColors: face; color: #23c1e1"></a-entity> 
-        animation="property: position; dur: 5000; from: 23 -1.589 9.722; to: 23 -1.589  0; loop: true; dir: altrenate"
-  
-        <a-entity id="hen" ply-model="src: Chicken.ply" position="-3.13883 -0.11125 0.12761" rotation="-90 90 0" scale="0.2 0.2 0.2" <="" a-scene="">
-    <!-- Code injected by live-server -->
-  <script>
-    // <![CDATA[  <-- For SVG support
-    if ('WebSocket' in window) {
-      (function () {
-        function refreshCSS() {
-          var sheets = [].slice.call(document.getElementsByTagName("link"));
-          var head = document.getElementsByTagName("head")[0];
-          for (var i = 0; i < sheets.length; ++i) {
-            var elem = sheets[i];
-            var parent = elem.parentElement || head;
-            parent.removeChild(elem);
-            var rel = elem.rel;
-            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-              var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-              elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-            }
-            parent.appendChild(elem);
-          }
-        }
-        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-        var address = protocol + window.location.host + window.location.pathname + '/ws';
-        var socket = new WebSocket(address);
-        socket.onmessage = function (msg) {
-          if (msg.data == 'reload') window.location.reload();
-          else if (msg.data == 'refreshcss') refreshCSS();
-        };
-        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-          console.log('Live reload enabled.');
-          sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-        }
-      })();
-    }
-    else {
-      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-    }
-    // ]]>
-  </script>
-  
-  
-  
-  
-  
-  
-  
-  
-  animation_first="easing: linear; property: position; to: 2 3 -5; dur: 2000; startEvents: loaded, animationcomplete_fourth"
-  animation_second="easing: linear; property: position; to: - 2 3 -5; dur: 2000; startEvents: animationcomplete_first"
-  animation_third="easing: linear; property: position; to: - 2 0 -5; dur: 2000; startEvents: animationcomplete
-  _second"
-  animation_fourth="easing: linear; property: position; to: 2 0 -5; dur: 2000; startEvents: animationcomplete_third"
-  &gt;</a-entity></a-box>
-  
 
 
 
@@ -197,7 +126,42 @@
 
 
 
-  <a-box position="1.07381 3.17369 -0.66849" scale="0.1 0.1 0.1" material="" geometry="" light="color: #ffd877; decay: -2.31; intensity: 0.5; type: point; shadowCameraVisible: true" rotation="">      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <a-box position="1.07381 3.17369 -0.66849" scale="0.1 0.1 0.1" material="" geometry="" light="color: #ffd877; decay: -2.31; intensity: 0.5; type: point; shadowCameraVisible: true" rotation="">      
 
       
       
@@ -214,50 +178,126 @@
       
       
           
-    <a-entity id="slimecore" ply-model="src: Slime Inner.ply" position="24.20526 -2.9799 -3.77098" rotation="-90 180 0" scale="1.5 1.5 1.5" animation_first="easing: linear; property: position; to: 24.205 -2.980 -3.770; dur: 2000; startEvents: loaded, animationcomplete_fourth" animation_second="property: rotation; to: -90 0 0; dur: 2000; startEvents: animationcomplete_first" animation_third="easing: linear; property: position; to: 24.205 -2.980 6.185; dur: 2000; startEvents: animationcomplete_second" animation_fourth="property: rotation; to: -90 90 0; dur: 2000; startEvents: animationcomplete_third"></a-entity>
-    animation="property: position; dur: 5000; from: 24.205 -2.980 6.185; to: 24.205 -2.980 -3.770; loop: true; dir: altrenate"
+          <a-entity id="slimecore" ply-model="src: Slime Inner.ply" position="24.20526 -2.9799 -3.77098" rotation="-90 180 0" scale="1.5 1.5 1.5" animation_first="easing: linear; property: position; to: 24.205 -2.980 -3.770; dur: 2000; startEvents: loaded, animationcomplete_fourth" animation_second="property: rotation; to: -90 0 0; dur: 2000; startEvents: animationcomplete_first" animation_third="easing: linear; property: position; to: 24.205 -2.980 6.185; dur: 2000; startEvents: animationcomplete_second" animation_fourth="property: rotation; to: -90 90 0; dur: 2000; startEvents: animationcomplete_third"></a-entity>
+          animation="property: position; dur: 5000; from: 24.205 -2.980 6.185; to: 24.205 -2.980 -3.770; loop: true; dir: altrenate"
+          
+          <a-entity id="slimejelly" ply-model="src: Slime Outter.ply" position="23 -1.589 0" rotation="-90 90 0" scale="" material="opacity: 0.4; shader: flat; transparent: true; vertexColors: face; color: #23c1e1"></a-entity> 
+          animation="property: position; dur: 5000; from: 23 -1.589 9.722; to: 23 -1.589  0; loop: true; dir: altrenate"
     
-    <a-entity id="slimejelly" ply-model="src: Slime Outter.ply" position="23 -1.589 0" rotation="-90 90 0" scale="" material="opacity: 0.4; shader: flat; transparent: true; vertexColors: face; color: #23c1e1"></a-entity> 
-    animation="property: position; dur: 5000; from: 23 -1.589 9.722; to: 23 -1.589  0; loop: true; dir: altrenate"
-
-    <a-entity id="hen" ply-model="src: Chicken.ply" position="-3.13883 -0.11125 0.12761" rotation="-90 90 0" scale="0.2 0.2 0.2" <="" a-scene="">
-<!-- Code injected by live-server -->
-<script>
-// <![CDATA[  <-- For SVG support
-if ('WebSocket' in window) {
-  (function () {
-    function refreshCSS() {
-      var sheets = [].slice.call(document.getElementsByTagName("link"));
-      var head = document.getElementsByTagName("head")[0];
-      for (var i = 0; i < sheets.length; ++i) {
-        var elem = sheets[i];
-        var parent = elem.parentElement || head;
-        parent.removeChild(elem);
-        var rel = elem.rel;
-        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-          var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-          elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-        }
-        parent.appendChild(elem);
+          <a-entity id="hen" ply-model="src: Chicken.ply" position="-3.13883 -0.11125 0.12761" rotation="-90 90 0" scale="0.2 0.2 0.2" <="" a-scene="">
+      <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ('WebSocket' in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+          var address = protocol + window.location.host + window.location.pathname + '/ws';
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == 'reload') window.location.reload();
+            else if (msg.data == 'refreshcss') refreshCSS();
+          };
+          if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+            console.log('Live reload enabled.');
+            sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+          }
+        })();
       }
-    }
-    var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-    var address = protocol + window.location.host + window.location.pathname + '/ws';
-    var socket = new WebSocket(address);
-    socket.onmessage = function (msg) {
-      if (msg.data == 'reload') window.location.reload();
-      else if (msg.data == 'refreshcss') refreshCSS();
-    };
-    if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-      console.log('Live reload enabled.');
-      sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-    }
-  })();
-}
-else {
-  console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-}
-// ]]>
+      else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+      }
+      // ]]>
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    animation_first="easing: linear; property: position; to: 2 3 -5; dur: 2000; startEvents: loaded, animationcomplete_fourth"
+    animation_second="easing: linear; property: position; to: - 2 3 -5; dur: 2000; startEvents: animationcomplete_first"
+    animation_third="easing: linear; property: position; to: - 2 0 -5; dur: 2000; startEvents: animationcomplete
+    _second"
+    animation_fourth="easing: linear; property: position; to: 2 0 -5; dur: 2000; startEvents: animationcomplete_third"
+    &gt;</a-entity></a-box>
+    <a-box position="-1.03471 3.037 -0.77961" scale="0.1 0.1 0.1" material="" geometry="" light="type: point; shadowCameraVisible: true; color: #ffd877; decay: -2.31; intensity: 0.5" rotation="-90 0 0">      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+          
+      <a-entity id="slimecore" ply-model="src: Slime Inner.ply" position="24.20526 -2.9799 -3.77098" rotation="-90 180 0" scale="1.5 1.5 1.5" animation_first="easing: linear; property: position; to: 24.205 -2.980 -3.770; dur: 2000; startEvents: loaded, animationcomplete_fourth" animation_second="property: rotation; to: -90 0 0; dur: 2000; startEvents: animationcomplete_first" animation_third="easing: linear; property: position; to: 24.205 -2.980 6.185; dur: 2000; startEvents: animationcomplete_second" animation_fourth="property: rotation; to: -90 90 0; dur: 2000; startEvents: animationcomplete_third"></a-entity>
+      animation="property: position; dur: 5000; from: 24.205 -2.980 6.185; to: 24.205 -2.980 -3.770; loop: true; dir: altrenate"
+      
+      <a-entity id="slimejelly" ply-model="src: Slime Outter.ply" position="23 -1.589 0" rotation="-90 90 0" scale="" material="opacity: 0.4; shader: flat; transparent: true; vertexColors: face; color: #23c1e1"></a-entity> 
+      animation="property: position; dur: 5000; from: 23 -1.589 9.722; to: 23 -1.589  0; loop: true; dir: altrenate"
+
+      <a-entity id="hen" ply-model="src: Chicken.ply" position="-3.13883 -0.11125 0.12761" rotation="-90 90 0" scale="0.2 0.2 0.2" <="" a-scene="">
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 
 
@@ -273,28 +313,6 @@ animation_third="easing: linear; property: position; to: - 2 0 -5; dur: 2000; st
 _second"
 animation_fourth="easing: linear; property: position; to: 2 0 -5; dur: 2000; startEvents: animationcomplete_third"
 &gt;</a-entity></a-box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    
-    
-    
     </a-scene>
   </body>
 </html>
