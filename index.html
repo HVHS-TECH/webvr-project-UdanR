@@ -243,7 +243,97 @@
                   material="color: lime; roughness: 0.8; metalness: 0.3">
         </a-entity>
       </a-entity>
+
+      <script>
+        AFRAME.registerComponent('slime-ai', {
+          schema: {
+            speed: {type: 'number', default: 0.01}
+          },
+          init: function () {
+            const el = this.el;
+            const player = document.querySelector('#rig'); // Your VR rig
+            const sword = document.querySelector('#sword');
       
+            this.dead = false;
+      
+            // Setup idle bounce animation
+            this.bounceUp = true;
+            this.bounceTimer = 0;
+      
+            // Check collision with sword
+            sword.addEventListener('collision', (e) => {
+              const target = e.detail.body.el;
+              if (target === el && !this.dead) {
+                this.killSlime();
+              }
+            });
+          },
+      
+          tick: function (time, deltaTime) {
+            if (this.dead) return;
+      
+            const player = document.querySelector('#rig');
+            if (!player) return;
+      
+            const slimePos = this.el.object3D.position;
+            const playerPos = player.object3D.position;
+      
+            const dist = slimePos.distanceTo(playerPos);
+      
+            // If player is close, move toward them
+            if (dist < 4) {
+              const direction = new THREE.Vector3().subVectors(playerPos, slimePos).normalize();
+              this.el.object3D.position.addScaledVector(direction, this.data.speed * deltaTime);
+            }
+      
+            // Idle bounce
+            this.bounceTimer += deltaTime;
+            if (this.bounceTimer > 500) {
+              this.bounceUp = !this.bounceUp;
+              this.bounceTimer = 0;
+            }
+            const bounceY = this.bounceUp ? 0.52 : 0.48;
+            this.el.object3D.position.y = bounceY;
+          },
+      
+          killSlime: function () {
+            this.dead = true;
+            this.el.setAttribute('visible', false);
+            this.el.removeAttribute('dynamic-body');
+      
+            // Respawn after 3 seconds
+            setTimeout(() => {
+              const newX = Math.random() * 10 - 5;
+              const newZ = Math.random() * 10 - 5;
+              this.el.setAttribute('position', `${newX} 0.5 ${newZ}`);
+              this.el.setAttribute('visible', true);
+              this.el.setAttribute('dynamic-body', '');
+              this.dead = false;
+            }, 3000);
+          }
+        });
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
         <!-- Rock (PLY model) -->
         <a-box id=3 radius="1.1" scale="1 0.7 1" position="27.6 0.6 46.5" material="color: #3a3a3a; roughness: 1; metalness: 0"></a-box>
