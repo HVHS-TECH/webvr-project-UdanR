@@ -426,25 +426,21 @@
   AFRAME.registerComponent('stab-stick', {
     init: function () {
       const el = this.el;
-      const particle = el.querySelector('#pullParticles');
-      const sound = el.querySelector('#pullSound');
-
       const rig = document.querySelector('#rig');
-      const hand = rig.querySelector('[laser-controls][hand="right"]'); // adjust if using left hand
+      const hand = rig.querySelector('[laser-controls][hand="right"]'); // Change to "left" if needed
 
       let isStuck = true;
 
       el.addEventListener('grab-start', () => {
         if (!isStuck) return;
 
-        // ✨ WORTHY: Fly to hand
         isStuck = false;
 
         // Release from stone
         el.removeAttribute('static-body');
         el.setAttribute('dynamic-body', 'mass: 1');
 
-        // Add animation toward hand
+        // Animate to hand
         const handPos = new THREE.Vector3();
         hand.object3D.getWorldPosition(handPos);
 
@@ -456,28 +452,19 @@
           easing: 'easeOutCubic'
         });
 
-        // Optionally rotate as it flies
         el.setAttribute('animation__spin', {
           property: 'rotation',
           to: '0 360 0',
           dur: 800
         });
 
-        // Play effects
-        if (particle) {
-          particle.setAttribute('visible', 'true');
-          setTimeout(() => particle.setAttribute('visible', 'false'), 1000);
-        }
-
-        if (sound) sound.components.sound.playSound();
-
-        // Auto attach to hand after a delay
+        // Auto attach to hand after flying
         setTimeout(() => {
-          hand.emit('grab-start', { hand: hand }); // simulate pickup
+          hand.emit('grab-start', { hand: hand }); // Simulate grab
         }, 800);
       });
 
-      // Re-stick logic
+      // Restick when colliding with ground or tree
       el.addEventListener('collision', (e) => {
         const contact = e.detail.body.el;
         if (!isStuck && contact && (contact.classList.contains('ground') || contact.classList.contains('tree'))) {
@@ -489,7 +476,6 @@
     }
   });
 </script>
-
 
 
 
