@@ -311,28 +311,62 @@
       const particle = el.querySelector('#pullParticles');
       const sound = el.querySelector('#pullSound');
 
-      el.addEventListener('collision', (e) => {
-        const contact = e.detail.body.el;
-        if (contact && (contact.classList.contains('ground') || contact.classList.contains('tree'))) {
-          el.setAttribute('dynamic-body', 'mass: 0');
-          el.components['dynamic-body'].syncToPhysics();
-        }
-      });
+      const rig = document.querySelector('#rig');
+      const hand = rig.querySelector('[laser-controls][hand="right"]'); // adjust if using left hand
+
+      let isStuck = true;
 
       el.addEventListener('grab-start', () => {
-        // Unstick
-        el.setAttribute('dynamic-body', 'mass: 1');
-        el.components['dynamic-body'].syncToPhysics();
+        if (!isStuck) return;
 
-        // Trigger particles
+        // ✨ WORTHY: Fly to hand
+        isStuck = false;
+
+        // Release from stone
+        el.removeAttribute('static-body');
+        el.setAttribute('dynamic-body', 'mass: 1');
+
+        // Add animation toward hand
+        const handPos = new THREE.Vector3();
+        hand.object3D.getWorldPosition(handPos);
+
+        el.removeAttribute('animation__fly');
+        el.setAttribute('animation__fly', {
+          property: 'position',
+          to: `${handPos.x} ${handPos.y} ${handPos.z}`,
+          dur: 800,
+          easing: 'easeOutCubic'
+        });
+
+        // Optionally rotate as it flies
+        el.setAttribute('animation__spin', {
+          property: 'rotation',
+          to: '0 360 0',
+          dur: 800
+        });
+
+        // Play effects
         if (particle) {
           particle.setAttribute('visible', 'true');
-          // Optional: Hide after short time
-          setTimeout(() => particle.setAttribute('visible', 'false'), 500);
+          setTimeout(() => particle.setAttribute('visible', 'false'), 1000);
         }
 
-        // Play sound
         if (sound) sound.components.sound.playSound();
+
+        // Auto attach to hand after a delay
+        setTimeout(() => {
+          hand.emit('grab-start', { hand: hand }); // simulate pickup
+        }, 800);
+      });
+
+      // Re-stick logic
+      el.addEventListener('collision', (e) => {
+        const contact = e.detail.body.el;
+        if (!isStuck && contact && (contact.classList.contains('ground') || contact.classList.contains('tree'))) {
+          el.setAttribute('dynamic-body', 'mass: 0');
+          el.components['dynamic-body'].syncToPhysics();
+          isStuck = true;
+        }
       });
     }
   });
