@@ -254,7 +254,42 @@
         static-body
         material=" metalness: 0.9; roughness: 0.2"
       ></a-entity>
-
+        <script>
+        // Register the pull interaction
+        AFRAME.registerComponent('pullable-sword', {
+          init: function () {
+            const sword = this.el;
+            let pulled = false;
+  
+            sword.addEventListener('click', () => {
+              if (!pulled) {
+                pulled = true;
+  
+                // Animate sword pulling out
+                sword.setAttribute('animation', {
+                  property: 'position',
+                  to: '0 1.5 -3',
+                  dur: 1000,
+                  easing: 'easeOutQuad'
+                });
+  
+                // Enable physics & grabbing after animation
+                setTimeout(() => {
+                  sword.removeAttribute('static-body');
+                  sword.setAttribute('dynamic-body', '');
+                  sword.setAttribute('grabbable', '');
+                }, 1000);
+              }
+            });
+          }
+        });
+  
+        // Attach the behavior
+        document.addEventListener('DOMContentLoaded', () => {
+          const sword = document.querySelector('#sword');
+          sword.setAttribute('pullable-sword', '');
+        });
+      </script>
       
 
 
