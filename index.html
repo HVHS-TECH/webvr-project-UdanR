@@ -246,18 +246,23 @@
       
       
       <!---Comment Slime----> 
-      <a-entity id="slime" position="30 0.5 50">
-        <!-- Outer jelly -->
-        <a-entity ply-model="src: url(Slime Outter.ply)"
-                  material="color: green; transparent: true; opacity: 0.5; roughness: 0.3; metalness: 0.1">
-        </a-entity>
-      
-        <!-- Inner core -->
-        <a-entity ply-model="src: url(Slime Inner.ply)"
-                  material="color: lime; roughness: 0.8; metalness: 0.3">
-        </a-entity>
+    <!-- Slime -->
+    <a-entity class="slime" slime-ai position="2 0.5 -3">
+      <!-- Outer jelly -->
+      <a-entity ply-model="src: url(Slime Outter.ply)"
+                material="color: green; transparent: true; opacity: 0.5">
       </a-entity>
-
+      <!-- Inner core -->
+      <a-entity ply-model="src: url(Slime Inner.ply)"
+                material="color: lime">
+      </a-entity>
+      <!-- Health Bar -->
+      <a-entity id="slime-healthbar" geometry="primitive: plane; height: 0.05; width: 0.2"
+                material="color: red"
+                position="0 0.6 0">
+      </a-entity>
+    </a-entity>
+    
       <script>
         AFRAME.registerComponent('slime-ai', {
           schema: {
