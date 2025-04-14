@@ -275,12 +275,119 @@
 
 <!-- Enemy Box -->
 <a-box id="enemy-box" color="orange" position="3 0.5 -5" enemy-box></a-box>
+<script>
+  AFRAME.registerComponent('player-health', {
+    schema: { max: {default: 5}, current: {default: 5} },
+    init: function () {
+      this.healthBar = document.querySelector('#health-bar');
+      this.el.addEventListener('player-hit', e => {
+        this.data.current -= e.detail.damage;
+        if (this.data.current < 0) this.data.current = 0;
+        this.updateBar();
+        if (this.data.current <= 0) this.respawnPlayer();
+      });
+    },
+    updateBar: function () {
+      const width = (this.data.current / this.data.max) * 0.6;
+      this.healthBar.setAttribute('geometry', 'width', width);
+    },
+    respawnPlayer: function () {
+      this.el.setAttribute('position', '0 1.6 0');
+      this.data.current = this.data.max;
+      this.updateBar();
+    }
+  });
 
+  AFRAME.registerComponent('enemy-box', {
+    init: function () {
+      this.player = document.querySelector('#rig');
+      this.sword = document.querySelector('#sword');
+      this.active = true;
+      this.shootInterval = null;
+      this.originalPosition = this.el.getAttribute('position');
+
+      this.checkDistance = this.checkDistance.bind(this);
+      this.startShooting = this.startShooting.bind(this);
+      this.stopShooting = this.stopShooting.bind(this);
+      this.handleSwordCollision = this.handleSwordCollision.bind(this);
+
+      this.sword.addEventListener('collision', (e) => {
+        if (e.detail.body.el === this.el && this.active) {
+          this.handleSwordCollision();
+        }
+      });
+
+      this.el.sceneEl.addEventListener('loaded', () => {
+        setInterval(this.checkDistance, 1000);
+      });
+    },
+
+    checkDistance: function () {
+      if (!this.active) return;
+      const playerPos = this.player.object3D.position;
+      const boxPos = this.el.object3D.position;
+      const distance = boxPos.distanceTo(playerPos);
+
+      if (distance < 6 && !this.shootInterval) {
+        this.startShooting();
+      } else if (distance >= 6 && this.shootInterval) {
+        this.stopShooting();
+      }
+    },
+
+    startShooting: function () {
+      this.shootInterval = setInterval(() => {
+        const projectile = document.createElement('a-box');
+        projectile.setAttribute('color', 'red');
+        projectile.setAttribute('position', this.el.getAttribute('position'));
+        projectile.setAttribute('width', '0.2');
+        projectile.setAttribute('height', '0.2');
+        projectile.setAttribute('depth', '0.2');
+        projectile.setAttribute('dynamic-body', '');
+
+        const direction = new THREE.Vector3().subVectors(
+          this.player.object3D.position,
+          this.el.object3D.position
+        ).normalize().multiplyScalar(5);
+
+        projectile.addEventListener('body-loaded', () => {
+          projectile.body.velocity.set(direction.x, direction.y, direction.z);
+        });
+
+        projectile.addEventListener('collide', e => {
+          if (e.detail.body.el === this.player) {
+            this.player.emit('player-hit', { damage: 1 });
+            projectile.parentNode.removeChild(projectile);
+          }
+          if (e.detail.body.el === this.sword) {
+            projectile.parentNode.removeChild(projectile);
+          }
+        });
+
+        this.el.sceneEl.appendChild(projectile);
+      }, 2000);
+    },
+
+    stopShooting: function () {
+      clearInterval(this.shootInterval);
+      this.shootInterval = null;
+    },
+
+    handleSwordCollision: function () {
+      this.active = false;
+      this.el.setAttribute('visible', false);
+      this.stopShooting();
+      setTimeout(() => {
+        this.el.setAttribute('visible', true);
+        this.active = true;
+      }, 180000); // Respawn after 3 minutes
+    }
+  });
+</script> 
       <!-- Sword (PLY model) -->
       
       <a-entity ply-model="src: Sword.ply" id="sword" position="27.31103 2.242 46.08717" scale="0.1 0.1 0.15" rotation="90 0 0" pullable-sword="" animation="property: position; to: 23.7 -26.2 23.1; easing: easeOutQuad" dynamic-body="" grabbable="" class="grabbable"></a-entity>
       <a-entity id="sword" class="weapon" ply-model="src: url(sword.ply)" dynamic-body stab-stick></a-entity>
-      <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
             <script>
         AFRAME.registerComponent('pullable-sword', {
           init: function () {
