@@ -140,7 +140,7 @@
       <a-entity id="trees" ply-model="src: trees.ply" position="53.082 -0.170 24.14" rotation="-90 0 0"></a-entity>
       <a-entity id="trees" ply-model="src: trees.ply" position="15.498 -0.170 23.42639" rotation="-90 0 0"></a-entity>
       <a-entity id="trees" ply-model="src: trees.ply" position="40.59 -0.170 23.42639" rotation="-90 0 0"></a-entity>
-      <a-entity id="plain" ply-model="src: floor (2).ply" position="27.79487 -0.17 98.85655" rotation="-90 0 0"></a-entity>
+      <a-entity id="plain" ply-model="src: floor (2).ply" position="27.79487 -0.17 98.937" rotation="-90 0 0"></a-entity>
       <a-entity id="deep trees" ply-model="src: deep tree.ply" position="28.36487 -0.170 98.84655" rotation="-90 0 0"></a-entity>
       <a-entity id="road" ply-model="src: road.ply" position="9.285 -6.51512 43.81736" rotation="-90 0 0" scale="1.03 1 1"></a-entity>
       <a-entity id="road" ply-model="src: road.ply" position="9.285 -6.515 54.1396" rotation="-90 0 0" scale="1.03 1 1"></a-entity>
@@ -235,12 +235,22 @@
       
       
         <!-- Rock (PLY model) -->
-        <a-sphere position="23.7 -27.8 23.1" radius="0.6" color="#555" static-body></a-sphere>
-        <a-sphere position="24.2 -27.8 23.2" radius="0.4" color="#444" static-body></a-sphere>
-        <a-sphere position="23.3 -27.8 22.8" radius="0.5" color="#666" static-body></a-sphere>
-        <a-sphere position="23.9 -27.6 22.7" radius="0.3" color="#333" static-body></a-sphere>
-
-      ></a-entity>
+        <a-sphere radius="1.1" scale="1 0.7 1" position="27.6 0.6 46.5" material="color: #3a3a3a; roughness: 1; metalness: 0"></a-sphere>
+    
+        <!-- Side boulders -->
+        <a-box depth="1.2" height="0.8" width="0.6" position="28.5.6 0.6 46.5" rotation="20 30 10" 
+               material="color: #3a3a3a; roughness: 1; metalness: 0"></a-box>
+        
+        <a-tetrahedron radius="0.6" position="28.6 0.6 46.5" rotation="10 60 0" 
+                       material="color: #3a3a3a; roughness: 1; metalness: 0"></a-tetrahedron>
+        
+        <a-octahedron radius="0.5" position="27.6 0.6 46.5" rotation="15 40 0"
+                      material="color: #3a3a3a; roughness: 1; metalness: 0"></a-octahedron>
+        
+        <!-- Mossy touch -->
+        <a-box depth="0.5" height="0.05" width="0.6" position="26.6 0.6 46.5"
+               rotation="0 0 20" material="color: #2f4f2f; roughness: 0.9; metalness: 0.1"></a-box>
+    
 
       <!-- Sword (PLY model) -->
       <a-entity ply-model="Sword.ply"
