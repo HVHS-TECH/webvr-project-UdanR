@@ -101,10 +101,16 @@
 <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script> 
 <script src="https://unpkg.com/aframe-super-hands-component@4.0.5/dist/aframe-super-hands-component.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v3.3.0/dist/aframe-physics-system.min.js"></script>
-  
+<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
+
+<!-- A-frame extras-->
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+ <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
+
 </head>
     <body>
-      <a-scene physics="gravity: -9.8">
+      <a-scene physics="gravity: -9.8; restitution: 0.1" inspector-plugin-recast>
         <a-entity camera="" position="-0.09549 1.6 -0.37926" wasd-controls="acceleration: 20" rotation="0 -180 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera=""></a-entity>
         <a-entity laser-controls="hand: right" super-hands></a-entity>
         <a-entity laser-controls="hand: left" raycaster="objects: .clickable"></a-entity>
