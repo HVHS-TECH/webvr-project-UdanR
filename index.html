@@ -467,16 +467,6 @@
           hand.emit('grab-start', { hand: hand }); // Simulate grab
         }, 800);
       });
-
-      // Restick when colliding with ground or tree
-      el.addEventListener('collision', (e) => {
-        const contact = e.detail.body.el;
-        if (!isStuck && contact && (contact.classList.contains('ground') || contact.classList.contains('tree'))) {
-          el.setAttribute('dynamic-body', 'mass: 0');
-          el.components['dynamic-body'].syncToPhysics();
-          isStuck = true;
-        }
-      });
     }
   });
 </script>
