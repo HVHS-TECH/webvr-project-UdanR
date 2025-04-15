@@ -198,8 +198,8 @@
       <a-entity id="huge tree bottom" ply-model="src: hudge tree bottom.ply" position="-9.72 -0.36 111.41" rotation="-90 0 0" scale="1 1 1.35"></a-entity>
       <!-- Teleport Plate -->
       <a-cylinder id="ground-plate" position="-5.14265 0.44343 64.34183" radius="0.5" height="0.1" color="green" teleport-ui="target: #top-plate; message: Do you want to teleport to the top of the sacred tree of ancient?" material="" geometry=""></a-cylinder>
-      <a-cylinder id="top-plate" position="5 10 -3" radius="0.5" height="0.1" color="blue" teleport-ui="target: #ground-plate; message: Would you like to teleport to the ground?"></a-cylinder>
-<script>
+      <a-cylinder id="top-plate" position="-3.65745 14.68961 65.13497" radius="0.5" height="0.1" color="blue" teleport-ui="target: #ground-plate; message: Would you like to teleport to the ground?" material="" geometry=""></a-cylinder>
+      <script>
   AFRAME.registerComponent('teleport-ui', {
     schema: {
       target: { type: 'selector' },
