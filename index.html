@@ -196,6 +196,15 @@
       <a-entity id="deep trees-2" ply-model="src: deep tree.ply" position="40.66228 -0.17 24.44051" rotation="-90 0 0"></a-entity>
       <a-entity id="huge tree top" ply-model="src: huge tree top.ply" position="-12.52 3.26 134.51" rotation="-90 0 0" scale="1.5 1.5 1"></a-entity>
       <a-entity id="huge tree bottom" ply-model="src: hudge tree bottom.ply" position="-9.72 -0.36 111.41" rotation="-90 0 0" scale="1 1 1.35"></a-entity>
+      <!-- Ground Teleport Plate -->
+<a-cylinder id="ground-plate" position="5 0.1 -3" radius="0.5" height="0.1" color="green" teleport-ui="target: #top-plate; message: Do you want to teleport to the top of the sacred tree of ancient?"></a-cylinder>
+
+<!-- Top Teleport Plate -->
+<a-cylinder id="top-plate" position="5 10 -3" radius="0.5" height="0.1" color="blue" teleport-ui="target: #ground-plate; message: Would you like to teleport to the ground?"></a-cylinder>
+
+<!-- Laser Controls (add inside your player rig or hand entity if not already there) -->
+<a-entity laser-controls="hand: right" raycaster="objects: .clickable"></a-entity>
+
       <a-entity id="deep plain" ply-model="src: floor (2).ply" position="6.76 -0.17 82.66" rotation="-90 0 0" scale="3 1.14 1"></a-entity>
       <a-entity id="house1-2" ply-model="src: house 1.ply" position="-7.9549 13.57778 67.73566" rotation="-90 -90 90" scale="0.5 0.5 0.5"></a-entity>
       <a-entity id="house1-2" ply-model="src: house 1.ply" position="-7.9549 13.57778 66.65328" rotation="-90 -90 90" scale="0.5 0.5 0.5"></a-entity>     
