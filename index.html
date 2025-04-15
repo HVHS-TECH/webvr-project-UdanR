@@ -106,9 +106,8 @@
     <body>
       <a-scene physics="gravity: -9.8">
         <a-entity camera="" position="-0.09549 1.6 -0.37926" wasd-controls="acceleration: 20" rotation="0 -180 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera=""></a-entity>
-        <a-entity laser-controls="hand: left" super-hands></a-entity>
         <a-entity laser-controls="hand: right" super-hands></a-entity>
-        <a-entity laser-controls="hand: right" raycaster="objects: .clickable"></a-entity>
+        <a-entity laser-controls="hand: left" raycaster="objects: .clickable"></a-entity>
 
           
       
@@ -200,7 +199,6 @@
       <!-- Teleport Plate -->
 <a-cylinder id="ground-plate" position="5 0.1 -3" radius="0.5" height="0.1" color="green" teleport-ui="target: #top-plate; message: Do you want to teleport to the top of the sacred tree of ancient?"></a-cylinder>
 <a-cylinder id="top-plate" position="5 10 -3" radius="0.5" height="0.1" color="blue" teleport-ui="target: #ground-plate; message: Would you like to teleport to the ground?"></a-cylinder>
-
 <script>
   AFRAME.registerComponent('teleport-ui', {
     schema: {
