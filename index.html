@@ -390,8 +390,8 @@
 </script> 
       <!-- Sword (PLY model) -->
       
-      <a-entity ply-model="src: Sword.ply" id="sword" position="27.31103 2.242 46.08717" scale="0.1 0.1 0.15" rotation="90 0 0" pullable-sword="" animation="property: position; to: 23.7 -26.2 23.1; easing: easeOutQuad" dynamic-body="" grabbable="" class="grabbable"></a-entity>
-      <a-entity id="sword" class="weapon" ply-model="src: url(sword.ply)" dynamic-body stab-stick></a-entity>
+      <a-entity ply-model="src: Sword.ply" id="sword" position="27.3543 2.24336 46.02025" scale="0.1 0.1 0.15" rotation="90 0 0" pullable-sword="" animation="property: position; to: 23.7 -26.2 23.1; easing: easeOutQuad" dynamic-body="sphereRadius: NaN" grabbable="" class="grabbable" velocity=""></a-entity>
+            <a-entity id="sword" class="weapon" ply-model="src: url(sword.ply)" dynamic-body stab-stick></a-entity>
             <script>
         AFRAME.registerComponent('pullable-sword', {
           init: function () {
